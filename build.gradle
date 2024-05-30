@@ -1,0 +1,13 @@
+
+tasks.register('test') {
+  doFirst {
+    // Work around System.out using platform encoding regardless of console codepage
+    // Alternatives are setting -Dfile.encoding=UTF-8
+    System.out.flush();
+    PrintStream out = new PrintStream(System.out, true, "UTF-8");
+    out.println("\u267B");
+    out.println("\u001B[31;1m\u2193\u001B[0m");
+    out.println("\u001B[33m\u2191\u001B[0m");
+    System.out.flush();
+  }
+}
